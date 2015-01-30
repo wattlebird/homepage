@@ -1,0 +1,38 @@
+body {
+    background-image: url(../img/bg.jpg);
+}
+
+.footer {
+    opacity: 0;
+
+    transition: opacity 0.4s;
+}
+
+.footer:hover{
+    opacity: 0.95;
+}
+
+#frontimg {
+    margin-top: 100px;
+    margin-bottom: 20px;
+}
+
+#githubicon {
+    background-color: #f5d1ce;
+}
+
+#gplusicon {
+    background-color: #e58497;
+}
+
+#twittericon {
+    background-color: #c8e3f7;
+}
+
+#aboutmeicon {
+    background-color: #eaddc6;
+}
+
+.icon {
+    margin: 0 10px;
+}
