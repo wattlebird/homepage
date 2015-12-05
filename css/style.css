@@ -1,5 +1,7 @@
 body {
-    background-image: url(../img/bg.jpg);
+    background-image: url(../img/bg_in_b.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .footer {
@@ -12,27 +14,100 @@ body {
     opacity: 0.95;
 }
 
-#frontimg {
-    margin-top: 100px;
-    margin-bottom: 20px;
+.center{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -142px;
+  margin-left: -142px;
+
+  /*background-image: url(../img/headimg.png);*/
 }
 
-#githubicon {
-    background-color: #f5d1ce;
+#item1 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
 
-#gplusicon {
-    background-color: #e58497;
+#item2 {
+  position: absolute;
+  top: 0px;
+  left: 142px;
 }
 
-#twittericon {
-    background-color: #c8e3f7;
+#item3 {
+  position: absolute;
+  top: 142px;
+  left: 0px;
 }
 
-#aboutmeicon {
-    background-color: #eaddc6;
+#item4 {
+  position: absolute;
+  top: 142px;
+  left: 142px;
 }
 
-.icon {
-    margin: 0 10px;
+#item5 {
+  display: none;
+  background-color: rgb(131, 182, 225); /*blue*/
+
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 50%;
+}
+
+#item6 {
+  display: none;
+  background-color: rgb(206, 223, 82); /* yellow */
+
+  top: 50%;
+  left: 0;
+  width: 50%;
+  height: 50%;
+}
+
+#item7 {
+  display: none;
+  display: none;
+  background-color: rgb(250, 197, 95); /* orange */
+
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 50%;
+}
+
+#item8 {
+  display: none;
+  background-color: rgb(240, 128, 153); /* pink */
+
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 50%;
+}
+
+.intro{
+  position: fixed;
+}
+
+.intro p{
+  position: relative;
+  padding-top: 5%;
+  padding-left: 20%;
+  padding-bottom: 5%;
+  padding-right: 20%;
+  font-size: 2em;
+}
+
+.maps{
+  z-index: 1;
+}
+
+.maps a{
+  display: block;
+  width: 142px;
+  height: 142px;
 }
