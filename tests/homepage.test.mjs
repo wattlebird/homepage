@@ -51,14 +51,14 @@ test("homepage uses only local presentation assets", async () => {
   assert.ok(html.includes('<script type="module" src="script.js"></script>'));
   assert.doesNotMatch(html, /https?:\/\/[^"]+\.(?:css|js)(?:["?])/);
   await access(new URL("script.js", projectRoot));
-  await access(new URL("assets/neko-background.jpeg", projectRoot));
+  await access(new URL("assets/neko-background.png", projectRoot));
 });
 
 test("styles define the approved desktop and mobile composition", async () => {
   const css = await readProjectFile("styles.css");
 
   assert.ok(
-    css.includes('background-image: url("assets/neko-background.jpeg");'),
+    css.includes('background-image: url("assets/neko-background.png");'),
   );
   assert.ok(css.includes("background-position: center bottom;"));
   assert.ok(css.includes("background-size: cover;"));

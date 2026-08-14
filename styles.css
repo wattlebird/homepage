@@ -22,7 +22,7 @@ body {
   margin: 0;
   overflow: hidden;
   background-color: #fff;
-  background-image: url("assets/neko-background.jpeg");
+  background-image: url("assets/neko-background.png");
   background-repeat: no-repeat;
   background-position: center bottom;
   background-size: cover;
@@ -69,6 +69,78 @@ body {
   box-shadow: 0 0 0 5px #fff;
 }
 
+.about-page {
+  position: relative;
+  isolation: isolate;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-image: none;
+}
+
+.about-page::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-color: #fff;
+  background-image: url("assets/neko-background.png");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+  content: "";
+  transform: scaleX(-1);
+}
+
+.about-content {
+  width: min(650px, calc(100% - 40px));
+  min-height: 100vh;
+  min-height: 100svh;
+  margin-left: auto;
+  padding: 20px 20px 48px 0;
+}
+
+.about-title {
+  position: static;
+  max-width: none;
+  margin: 0 0 30px;
+  text-align: right;
+}
+
+.about-copy {
+  font-size: 14px;
+  line-height: 1.58;
+}
+
+.about-copy p {
+  margin: 0 0 20px;
+}
+
+.about-motto {
+  display: grid;
+  gap: 7px;
+  margin: 28px 0;
+  padding: 0;
+  font-size: 18px;
+  font-weight: 700;
+  list-style: none;
+}
+
+.about-back {
+  width: fit-content;
+  color: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.about-back:focus-visible {
+  outline: 2px solid #050505;
+  outline-offset: 4px;
+  box-shadow: 0 0 0 5px #fff;
+}
+
 .site-footer {
   position: fixed;
   bottom: 20px;
@@ -97,5 +169,28 @@ body {
 
   .site-footer {
     font-size: 11px;
+  }
+
+  .about-page::before {
+    background-position: 42% bottom;
+    opacity: 0.14;
+  }
+
+  .about-content {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .about-title {
+    font-size: 28px;
+  }
+
+  .about-copy {
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .about-motto {
+    font-size: 16px;
   }
 }
