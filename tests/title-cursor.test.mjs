@@ -6,10 +6,15 @@ import {
   startTitleCursor,
 } from "../script.js";
 
-test("formatTitle returns both cursor states", () => {
+test("formatTitle returns both homepage cursor states", () => {
   assert.equal(BASE_TITLE, "GeniusIke the Neko");
   assert.equal(formatTitle(false), "GeniusIke the Neko");
   assert.equal(formatTitle(true), "GeniusIke the Neko_");
+});
+
+test("formatTitle accepts a page-specific title", () => {
+  assert.equal(formatTitle(false, "About GeniusIke"), "About GeniusIke");
+  assert.equal(formatTitle(true, "About GeniusIke"), "About GeniusIke_");
 });
 
 test("startTitleCursor toggles the cursor every 500 milliseconds", () => {
@@ -39,7 +44,27 @@ test("startTitleCursor toggles the cursor every 500 milliseconds", () => {
   assert.equal(element.textContent, "GeniusIke the Neko_");
 });
 
-test("startTitleCursor keeps a stable cursor for reduced motion", () => {
+test("startTitleCursor reads the title from the element dataset", () => {
+  const element = {
+    dataset: { title: "About GeniusIke" },
+    textContent: "",
+  };
+  let timerScheduled = false;
+
+  const result = startTitleCursor({
+    element,
+    reducedMotion: true,
+    setIntervalFn() {
+      timerScheduled = true;
+    },
+  });
+
+  assert.equal(result, null);
+  assert.equal(timerScheduled, false);
+  assert.equal(element.textContent, "About GeniusIke_");
+});
+
+test("startTitleCursor keeps a stable homepage cursor for reduced motion", () => {
   const element = { textContent: "" };
   let timerScheduled = false;
 

@@ -1,7 +1,7 @@
 export const BASE_TITLE = "GeniusIke the Neko";
 
-export function formatTitle(cursorVisible) {
-  return `${BASE_TITLE}${cursorVisible ? "_" : ""}`;
+export function formatTitle(cursorVisible, baseTitle = BASE_TITLE) {
+  return `${baseTitle}${cursorVisible ? "_" : ""}`;
 }
 
 export function startTitleCursor({
@@ -13,8 +13,9 @@ export function startTitleCursor({
     throw new TypeError("A title element with textContent is required.");
   }
 
+  const baseTitle = element.dataset?.title || BASE_TITLE;
   let cursorVisible = true;
-  element.textContent = formatTitle(cursorVisible);
+  element.textContent = formatTitle(cursorVisible, baseTitle);
 
   if (reducedMotion) {
     return null;
@@ -22,7 +23,7 @@ export function startTitleCursor({
 
   return setIntervalFn(() => {
     cursorVisible = !cursorVisible;
-    element.textContent = formatTitle(cursorVisible);
+    element.textContent = formatTitle(cursorVisible, baseTitle);
   }, 500);
 }
 
