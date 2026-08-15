@@ -57,7 +57,7 @@ test("About page reuses only local shared presentation resources", async () => {
   await access(new URL("assets/neko-background.png", projectRoot));
 });
 
-test("About styles flip only the background and support responsive scrolling", async () => {
+test("About styles add a desktop reading surface and preserve the mobile overlay", async () => {
   const css = await readProjectFile("styles.css");
 
   assert.ok(css.includes(".about-page::before"));
@@ -70,10 +70,15 @@ test("About styles flip only the background and support responsive scrolling", a
   assert.ok(css.includes("font-size: 14px;"));
   assert.ok(css.includes(".about-back:focus-visible"));
 
+  const desktopRules = css.slice(0, css.indexOf("@media (max-width: 768px)"));
+  assert.ok(desktopRules.includes(".about-content"));
+  assert.ok(desktopRules.includes("background-color: #fff;"));
+
   const mobileRules = css.slice(css.indexOf("@media (max-width: 768px)"));
   assert.ok(mobileRules.includes(".about-content"));
   assert.ok(mobileRules.includes("width: 100%;"));
   assert.ok(mobileRules.includes("padding: 20px;"));
+  assert.ok(mobileRules.includes("background-color: transparent;"));
   assert.ok(mobileRules.includes(".about-title"));
   assert.ok(mobileRules.includes("font-size: 28px;"));
   assert.ok(mobileRules.includes(".about-copy"));

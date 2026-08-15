@@ -81,6 +81,36 @@ test("startTitleCursor keeps a stable homepage cursor for reduced motion", () =>
   assert.equal(element.textContent, "GeniusIke the Neko_");
 });
 
+test("startTitleCursor blinks a custom About title without reduced motion", () => {
+  const element = {
+    dataset: { title: "About GeniusIke" },
+    textContent: "",
+  };
+  const timerHandle = Symbol("timer");
+  let callback;
+  let delay;
+
+  const result = startTitleCursor({
+    element,
+    reducedMotion: false,
+    setIntervalFn(next, milliseconds) {
+      callback = next;
+      delay = milliseconds;
+      return timerHandle;
+    },
+  });
+
+  assert.equal(result, timerHandle);
+  assert.equal(delay, 500);
+  assert.equal(element.textContent, "About GeniusIke_");
+
+  callback();
+  assert.equal(element.textContent, "About GeniusIke");
+
+  callback();
+  assert.equal(element.textContent, "About GeniusIke_");
+});
+
 test("startTitleCursor rejects a missing title element", () => {
   assert.throws(
     () =>
