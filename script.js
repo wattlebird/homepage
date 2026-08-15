@@ -1,7 +1,7 @@
 export const BASE_TITLE = "GeniusIke the Neko";
 
 export function formatTitle(cursorVisible, baseTitle = BASE_TITLE) {
-  return `${baseTitle}${cursorVisible ? "_" : ""}`;
+  return `${baseTitle}${cursorVisible ? "_" : " "}`;
 }
 
 export function startTitleCursor({
