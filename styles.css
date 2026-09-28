@@ -70,6 +70,18 @@ body {
   box-shadow: 0 0 0 5px #fff;
 }
 
+footer a {
+  width: fit-content;
+  color: inherit;
+  text-decoration-line: underline;
+}
+
+footer a:focus-visible {
+  outline: 2px solid #050505;
+  outline-offset: 4px;
+  box-shadow: 0 0 0 5px #fff;
+}
+
 .about-page {
   position: relative;
   isolation: isolate;
